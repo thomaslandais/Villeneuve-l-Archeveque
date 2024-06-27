@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "a2boxApp",
-    "slug": "a2boxApp",
+    "slug": "a2boxapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,13 +15,28 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json", // TODO
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.a2mobile.a2boxapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4d91e9df-f509-45cf-872e-f08555b63132"
+      }
+    },
+    "owner": "a2display"
   }
 }
