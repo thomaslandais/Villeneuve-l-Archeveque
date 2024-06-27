@@ -1,8 +1,8 @@
 export default config = {
   // url: "",
   // deviceId: 0,
-  apiUrl: `https://api.appli.a2display.fr`,
+  prod: `https://app.a2display.fr/`,
   // apiUrl: `http://192.168.1.149:3006`,
-  apiRoot: `https://api.a2display.fr`,
+  devLocal: `192.168.1.78:3001/`,
   // apiRoot: "http://192.168.1.149:8010"
 }

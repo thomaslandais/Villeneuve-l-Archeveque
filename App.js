@@ -1,19 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import { WebView } from 'react-native-webview';
+import {StatusBar} from 'expo-status-bar';
+import {StyleSheet, View} from 'react-native';
+import {WebView} from 'react-native-webview';
 import Constants from 'expo-constants';
+import appConfig from "./app-config";
 
 export default function App() {
-  return (
-      <View style={styles.container}>
-        <WebView
-            source={{ uri: 'https://app.a2display.fr/login' }}
-            style={styles.webview}
-            originWhitelist={['https://app.a2display.fr/*']}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            scalesPageToFit={false}
-            injectedJavaScript={`
+    const uri = appConfig.devLocal;
+    return (
+        <View style={styles.container}>
+            <WebView
+                source={{uri: uri}}
+                style={styles.webview}
+                originWhitelist={[uri]}
+                javaScriptEnabled={true}
+                domStorageEnabled={true}
+                scalesPageToFit={false}
+                injectedJavaScript={`
               const meta = document.createElement('meta');
               meta.name = 'viewport';
               meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
@@ -22,21 +24,21 @@ export default function App() {
               style.innerHTML = 'body { overflow-x: hidden; }';
               document.head.appendChild(style);
             `}
-        />
-        <StatusBar style="auto" />
-      </View>
-  );
+            />
+            <StatusBar style="auto"/>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Constants.statusBarHeight,
-    width: '100%',
-    overflow: 'hidden',
-  },
-  webview: {
-    flex: 1,
-    width: '100%',
-  },
+    container: {
+        flex: 1,
+        paddingTop: Constants.statusBarHeight,
+        width: '100%',
+        overflow: 'hidden',
+    },
+    webview: {
+        flex: 1,
+        width: '100%',
+    },
 });
