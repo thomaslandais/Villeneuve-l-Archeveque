@@ -9,12 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~51.0.14",
+    "@react-native-async-storage/async-storage": "^1.23.1",
+    "expo": "^51.0.17",
+    "expo-constants": "~16.0.2",
+    "expo-media-library": "~16.0.4",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
     "react-native": "0.74.2",
-    "react-native-webview": "^13.10.4",
-    "expo-constants": "~16.0.2"
+    "react-native-webview": "^13.10.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
