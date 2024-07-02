@@ -10,9 +10,9 @@
         }
       ]
     ],
-    "name": "a2boxApp",
+    "name": "A2Display édition",
     "slug": "a2boxapp",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -23,18 +23,18 @@
     },
     "ios": {
       "supportsTablet": true,
-      "icon": "./assets/icon.png",
+      "icon": "./assets/adaptive-icon.png",
       "bundleIdentifier": "com.a2mobile.a2boxapp",
-      "buildNumber": "1.0.1",
+      "buildNumber": "1.0.0",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app needs access to the photo library to show you your photos.",
         "NSPhotoLibraryAddUsageDescription": "This app needs access to the photo library to save photos."
       }
     },
     "android": {
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
