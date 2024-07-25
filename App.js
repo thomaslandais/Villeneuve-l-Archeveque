@@ -5,12 +5,12 @@ import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
 import * as MediaLibrary from 'expo-media-library';
 import appConfig from './app-config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
  // prod ou devLocal (changer ip si devLocal dans app-config.js)
  const uri = appConfig.prod;
  const [modalVisible, setModalVisible] = useState(false);
- const [permissionsGranted, setPermissionsGranted] = useState(false);
 
  useEffect(() => {
   checkPermissions();
@@ -19,24 +19,17 @@ export default function App() {
  const checkPermissions = async () => {
   const { status: readStatus } = await MediaLibrary.getPermissionsAsync(false);
   const { status: writeStatus } = await MediaLibrary.getPermissionsAsync(true);
-
-  if (readStatus === 'granted' && writeStatus === 'granted') {
-   setPermissionsGranted(true);
-  } else {
+  const permissionAsked = await AsyncStorage.getItem('permissionAsked');
+  if ((readStatus !== 'granted' || writeStatus !== 'granted') && !permissionAsked) {
    setModalVisible(true);
+   await AsyncStorage.setItem('permissionAsked', 'true');
   }
  };
 
  const requestPermissions = async () => {
   const { status: readStatus } = await MediaLibrary.requestPermissionsAsync(false);
   const { status: writeStatus } = await MediaLibrary.requestPermissionsAsync(true);
-
-  if (readStatus === 'granted' && writeStatus === 'granted') {
-   setPermissionsGranted(true);
-   setModalVisible(false);
-  } else {
-   alert('Permission not granted. The app may not work correctly.');
-  }
+  setModalVisible(false);
  };
 
  const handleShouldStartLoadWithRequest = (request) => {
@@ -68,28 +61,27 @@ export default function App() {
     >
      <View style={styles.modalView}>
       <Text style={styles.modalText}>
-       A2Box nécessite l'accès à vos fichiers pour que vous puissiez les partager sur vos écrans via l'application.
+       A2Box nécessite l'accès à vos photos et fichiers PDF pour que vous puissiez les sélectionner et les partager sur vos différents écrans via l'application. Cette autorisation est nécessaire pour que vous puissiez partager des fichiers depuis votre téléphone ou votre tablette connectés à votre compte A2Box.
       </Text>
       <Image source={require('./assets/icon.png')} style={styles.image} />
       <TouchableOpacity
         style={[styles.button, styles.buttonClose]}
         onPress={requestPermissions}
       >
-       <Text style={styles.textStyle}>Autoriser</Text>
+       <Text style={styles.textStyle}>Continuer</Text>
       </TouchableOpacity>
      </View>
     </Modal>
 
-    {permissionsGranted && (
-      <WebView
-        source={{ uri: uri }}
-        style={styles.webview}
-        originWhitelist={['*']}
-        javaScriptEnabled={true}
-        domStorageEnabled={true}
-        scalesPageToFit={false}
-        onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
-        injectedJavaScript={`
+    <WebView
+      source={{ uri: uri }}
+      style={styles.webview}
+      originWhitelist={['*']}
+      javaScriptEnabled={true}
+      domStorageEnabled={true}
+      scalesPageToFit={false}
+      onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+      injectedJavaScript={`
             const meta = document.createElement('meta');
             meta.name = 'viewport';
             meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
@@ -98,8 +90,7 @@ export default function App() {
             style.innerHTML = 'body { overflow-x: hidden; }';
             document.head.appendChild(style);
           `}
-      />
-    )}
+    />
 
     <StatusBar style="auto" />
    </View>
@@ -152,9 +143,9 @@ const styles = StyleSheet.create({
   marginBottom: 15,
   textAlign: 'center'
  },
-  image: {
-    width: 80,
-    height: 80,
-    padding: 15
-  }
+ image: {
+  width: 80,
+  height: 80,
+  padding: 15
+ }
 });

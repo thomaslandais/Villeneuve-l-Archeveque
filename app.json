@@ -4,15 +4,15 @@
       [
         "expo-media-library",
         {
-          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
-          "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+          "photosPermission": "Allow A2Display édition to access your photos to let you choose and post them to different devices associated with your account, such as for your profile or custom albums.",
+          "savePhotosPermission": "Allow A2Display édition to save photos to your library so you can post them to different devices associated with your account. For example, you can save a photo you have edited or a new photo created with the app.",
           "isAccessMediaLocationEnabled": true
         }
       ]
     ],
     "name": "A2Display édition",
     "slug": "a2boxapp",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,14 +25,15 @@
       "supportsTablet": true,
       "icon": "./assets/adaptive-icon.png",
       "bundleIdentifier": "com.a2mobile.a2boxapp",
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.0.3",
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "This app needs access to the photo library to show you your photos.",
-        "NSPhotoLibraryAddUsageDescription": "This app needs access to the photo library to save photos."
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to allow you to select and post photos to different devices associated with your account. For example, you can choose a photo to display on your profile or share with other devices.",
+        "NSPhotoLibraryAddUsageDescription": "This app needs access to your photo library to save photos so you can post them to different devices associated with your account. For example, you can save a photo you have edited or a new photo taken with the app.",
+        "NSDocumentsFolderUsageDescription": "This app needs access to your documents to allow you to select and post PDF files to different devices associated with your account. For example, you can choose a PDF file to share with other devices."
       }
     },
     "android": {
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
