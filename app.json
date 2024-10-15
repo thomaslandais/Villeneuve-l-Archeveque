@@ -10,8 +10,8 @@
         }
       ]
     ],
-    "name": "A2Display édition",
-    "slug": "a2boxapp",
+    "name": "Villeneuve l'Archevêque",
+    "slug": "Villeneuve",
     "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,7 @@
     "ios": {
       "supportsTablet": true,
       "icon": "./assets/adaptive-icon.png",
-      "bundleIdentifier": "com.a2mobile.a2boxapp",
+      "bundleIdentifier": "com.a2mobile.Villeneuve",
       "buildNumber": "1.0.3",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to allow you to select and post photos to different devices associated with your account. For example, you can choose a photo to display on your profile or share with other devices.",
@@ -43,7 +43,7 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE"
       ],
-      "package": "com.a2mobile.a2boxapp"
+      "package": "com.a2mobile.Villeneuve"
     },
     "web": {
       "favicon": "./assets/icon.png"
